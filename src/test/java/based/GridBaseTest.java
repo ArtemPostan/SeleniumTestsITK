@@ -28,15 +28,18 @@ public class GridBaseTest {
             System.err.println("Не удалось загрузить config.properties, будут использованы дефолтные значения.");
         }
     }
+    protected final String BASE_URL = getProperty("base.url", "http://youtrack-server:8080");
+    protected final String GRID_URL = getProperty("grid.url", "http://localhost:4444/");
+    protected final String ADMIN_USERNAME = getProperty("admin.username", "admin");
+    protected final String ADMIN_PASSWORD = getProperty("admin.password", "123");
 
-    protected final String BASE_URL = System.getProperty("base.url", properties.getProperty("base.url", "http://youtrack-server:8080"));
-
+    private static String getProperty(String key, String defaultValue) {
+        return System.getProperty(key, properties.getProperty(key, defaultValue));
+    }
     @BeforeEach
     public void setUp() throws MalformedURLException {
         ChromeOptions options = new ChromeOptions();
-
-        String gridUrlStr = System.getProperty("grid.url", properties.getProperty("grid.url", "http://localhost:4444/"));
-        URL gridUrl = new URL(gridUrlStr);
+        URL gridUrl = new URL(GRID_URL);
 
         WebDriver driver = new RemoteWebDriver(gridUrl, options);
         driverThread.set(driver);

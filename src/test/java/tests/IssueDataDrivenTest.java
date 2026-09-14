@@ -18,13 +18,7 @@ public class IssueDataDrivenTest extends AuthorizedGridBaseTest {
     })
     public void testCreateMultipleIssues(String issueSummary) {
 
-        System.out.println(
-                "INVOCATION: " + issueSummary +
-                        " | THREAD: " + Thread.currentThread().getName()
-        );
-
         IssuesPage issuesPage = new IssuesPage(driver());
-
         issuesPage.createNewIssue(issueSummary);
 
         WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(10));

@@ -7,12 +7,13 @@ import pages.LoginPage;
 import java.net.MalformedURLException;
 
 public class AuthorizedGridBaseTest extends GridBaseTest {
+
     @Override
     @BeforeEach
     public void setUp() throws MalformedURLException {
         super.setUp();
         LoginPage loginPage = new LoginPage(driver());
-        UserLoginData admin = new UserLoginData("admin", "123");
+        UserLoginData admin = new UserLoginData(ADMIN_USERNAME, ADMIN_PASSWORD);
         loginPage.login(admin);
     }
 }
