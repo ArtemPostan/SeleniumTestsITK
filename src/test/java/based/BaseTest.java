@@ -13,14 +13,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 
-public class GridBaseTest {
+public class BaseTest {
     protected static ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 
     private static final Properties properties = new Properties();
 
     static {
 
-        try (InputStream input = GridBaseTest.class.getClassLoader().getResourceAsStream("config.properties")) {
+        try (InputStream input = BaseTest.class.getClassLoader().getResourceAsStream("config.properties")) {
             if (input != null) {
                 properties.load(input);
             }

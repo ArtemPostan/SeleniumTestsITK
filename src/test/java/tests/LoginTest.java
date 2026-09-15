@@ -1,11 +1,11 @@
 package tests;
 
-import based.GridBaseTest;
+import based.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;
 
-public class LoginTest extends GridBaseTest {
+public class LoginTest extends BaseTest {
     @Test
     public void testSuccessfulLogin() {
 
