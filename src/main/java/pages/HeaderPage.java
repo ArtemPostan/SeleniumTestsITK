@@ -11,6 +11,10 @@ public class HeaderPage extends BasePage {
     private final By userAvatar = By.xpath("//img[@data-test='avatar']");
     private final By appearanceMenuLink = By.xpath("//span[text()='Оформление']");
 
+    private By getThemeRadioLocator(String themeValue) {
+        return By.cssSelector(String.format("input[value='%s']", themeValue));
+    }
+
     public HeaderPage(WebDriver driver) {
         super(driver);
     }
@@ -22,8 +26,7 @@ public class HeaderPage extends BasePage {
         WebElement appearanceLink = wait.until(ExpectedConditions.elementToBeClickable(appearanceMenuLink));
         appearanceLink.click();
 
-        By themeRadio = By.cssSelector("input[value='" + themeValue + "']");
-        WebElement themeInput = wait.until(ExpectedConditions.presenceOfElementLocated(themeRadio));
+        WebElement themeInput = wait.until(ExpectedConditions.presenceOfElementLocated(getThemeRadioLocator(themeValue)));
 
         clickElementViaJs(themeInput);
     }
