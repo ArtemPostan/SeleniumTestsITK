@@ -1,4 +1,4 @@
-package based;
+package tests;
 
 import dto.UserLoginData;
 import org.junit.jupiter.api.BeforeEach;

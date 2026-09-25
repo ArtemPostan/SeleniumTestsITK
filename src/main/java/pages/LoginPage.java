@@ -11,9 +11,9 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    private final By usernameField = By.id("username");
-    private final By passwordField = By.id("password");
-    private final By submitButton = By.cssSelector("[data-test='login-button']");
+    private final By usernameField = By.xpath("//input[@ng-model='username']");
+    private final By passwordField = By.xpath("//input[@ng-model='password']");
+    private final By submitButton = By.xpath("[//button[@data-test='login-button']");
 
     public void enterUsername(String username) {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameField));

@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class IssuesPage extends BasePage {
@@ -10,27 +9,26 @@ public class IssuesPage extends BasePage {
         super(driver);
     }
 
-    private final By createButtonInHeader = By.cssSelector("button[data-test='ring-link'] span[data-test='undefined-title']");
-    private final By newIssueMenuItem = By.cssSelector("[href*='newIssue']");
-    private final By summaryInput = By.cssSelector("textarea[data-test='summary']");
-    private final By submitButton = By.cssSelector("button[data-test='submit-button']");
+    private final By createIssueButton = By.xpath("//a[@data-test='createIssueButton']");
+    private final By summaryInput = By.xpath("//textarea[@data-test='summary']");
+    private final By submitButton = By.xpath("//button[@data-test='submit-button']");
 
-    public void createNewIssue(String summaryText) {
-        String originalWindow = driver.getWindowHandle();
+    public void createNewIssue(String summary) {
+        clickCreateButton();
+        typeSummary(summary);
+        confirmCreation();
+    }
 
-        WebElement createBtn = wait.until(ExpectedConditions.elementToBeClickable(createButtonInHeader));
-        createBtn.click();
+    private void clickCreateButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(createIssueButton)).click();
+    }
 
-        WebElement newIssueOption = wait.until(ExpectedConditions.elementToBeClickable(newIssueMenuItem));
-        newIssueOption.click();
+    private void typeSummary(String summary) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(summaryInput)).sendKeys(summary);
+    }
 
-        switchToNewWindow(originalWindow);
-
-        WebElement summaryField = wait.until(ExpectedConditions.visibilityOfElementLocated(summaryInput));
-        summaryField.sendKeys(summaryText);
-
-        WebElement submit = wait.until(ExpectedConditions.elementToBeClickable(submitButton));
-        submit.click();
+    private void confirmCreation() {
+        driver.findElement(submitButton).click();
     }
 
 }

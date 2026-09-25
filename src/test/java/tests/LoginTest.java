@@ -1,6 +1,5 @@
 package tests;
 
-import based.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;

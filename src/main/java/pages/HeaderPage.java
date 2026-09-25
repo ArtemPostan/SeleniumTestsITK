@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HeaderPage extends BasePage {
 
-    private final By userAvatar = By.cssSelector("[data-test='avatar']");
-    private final By appearanceMenuLink = By.cssSelector(".header__profile-link-like-item");
+    private final By userAvatar = By.xpath("//img[@data-test='avatar']");
+    private final By appearanceMenuLink = By.xpath("//span[text()='Оформление']");
 
     public HeaderPage(WebDriver driver) {
         super(driver);
